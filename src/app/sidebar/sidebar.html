@@ -1,0 +1,30 @@
+<mat-nav-list class="sidebar sidebar-container">
+  <div *ngFor="let primary of menu" class="menu-item">
+    <div class="menu-title" (click)="primary.children ? toggle(primary.id) : navigate(primary.route)">
+      <mat-icon class="arrow-icon" *ngIf="primary.children">
+        {{ isExpanded(primary.id) ? 'expand_more' : 'chevron_right' }}
+      </mat-icon>
+      <span class="menu-text">{{ primary.title }}</span>
+    </div>
+
+    <mat-nav-list class="submenu" *ngIf="primary.children && primary.expanded">
+      <div *ngFor="let secondary of primary.children" class="menu-item">
+        <div class="menu-title" (click)="secondary.children ? toggle(secondary.id) : navigate(secondary.route)">
+          <mat-icon class="arrow-icon" *ngIf="secondary.children">
+            {{ isExpanded(secondary.id) ? 'expand_more' : 'chevron_right' }}
+          </mat-icon>
+          <span class="menu-text">{{ secondary.title }}</span>
+        </div>
+
+        <mat-nav-list class="submenu" *ngIf="secondary.children && secondary.expanded">
+          <a mat-list-item
+             *ngFor="let tertiary of secondary.children"
+             [routerLink]="tertiary.route"
+             routerLinkActive="active">
+            {{ tertiary.title }}
+          </a>
+        </mat-nav-list>
+      </div>
+    </mat-nav-list>
+  </div>
+</mat-nav-list>

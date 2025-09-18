@@ -1,0 +1,89 @@
+/* Force all text inside sidebar to be white */
+:host ::ng-deep .sidebar,
+:host ::ng-deep .sidebar .menu-title,
+:host ::ng-deep .sidebar .menu-text,
+:host ::ng-deep .sidebar .mat-list-item,
+:host ::ng-deep .sidebar a.mat-list-item,
+:host ::ng-deep .sidebar .mat-list-text,
+:host ::ng-deep .sidebar .mat-line {
+  color: #ffffff !important;
+}
+
+/* Sidebar container */
+:host ::ng-deep .sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  height: 100vh;
+  padding-top: 10px;
+  overflow-y: auto;
+}
+
+/* Menu titles */
+:host ::ng-deep .menu-title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+:host ::ng-deep .menu-title:hover {
+  background-color: #34495e;
+}
+
+/* Arrow icons */
+:host ::ng-deep .arrow-icon,
+:host ::ng-deep .menu-title mat-icon {
+  color: #ffffff !important;
+  margin-right: 8px;
+}
+
+/* Submenus */
+:host ::ng-deep .submenu {
+  padding-left: 15px;
+  background-color: #34495e;
+}
+
+:host ::ng-deep .submenu .submenu {
+  padding-left: 20px;
+  background-color: #3d566e;
+}
+
+/* Links inside all submenu levels */
+:host ::ng-deep .submenu a.mat-list-item {
+  display: block;
+  padding: 8px 15px 8px 45px;
+  color: #ffffff !important;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 6px;
+  margin: 2px 6px;
+}
+
+/* Hover and active states */
+:host ::ng-deep .submenu a.mat-list-item:hover {
+  background-color: #1abc9c !important; 
+  color: #ffffff !important;
+}
+
+:host ::ng-deep .submenu a.mat-list-item.active {
+  background-color: #16a085 !important;
+  color: #ffffff !important;
+}
+
+/* Scrollbar optional */
+:host ::ng-deep .sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+:host ::ng-deep .sidebar::-webkit-scrollbar-thumb {
+  background-color: #7f8c8d;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .sidebar::-webkit-scrollbar-track {
+  background-color: #2c3e50;
+}
