@@ -1,10 +1,51 @@
 .page-container {
   padding: 20px;
-  background: #f9f9f9;
-  min-height: 80vh;
-  border-radius: 8px;
+  position: relative;
 }
-h2 {
-  margin-top: 0;
-  color: #333;
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.facility-btn {
+  padding: 5px 10px;
+}
+
+.facility-popup {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 350px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 15px;
+}
+
+.facility-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.facility-item {
+  margin: 4px 0;
+}
+
+.selected-summary {
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
 }

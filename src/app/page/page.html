@@ -1,5 +1,48 @@
 <div class="page-container">
-  <h2>{{ pageTitle }}</h2>
-  <p>You navigated to: <b>{{ currentRoute }}</b></p>
-  <p>This is a placeholder page for your dynamic route.</p>
+  <div class="page-header">
+    <h2>{{ title }}</h2>
+    <button class="facility-btn" (click)="openFacilityPopup()">Facility</button>
+  </div>
+
+  <p>You navigated to: <strong>{{ path }}</strong></p>
+
+  <!-- Facility Popup -->
+  <div class="facility-popup" *ngIf="showFacilityPopup">
+    <div class="facility-card">
+      <div class="facility-header">
+        <h3>Facility Data</h3>
+        <button class="close-btn" (click)="closeFacilityPopup()">✖</button>
+      </div>
+
+      <ng-container *ngIf="facilities.length; else noData">
+        <ng-template #renderFacility let-facility>
+          <div class="facility-item">
+            <mat-checkbox [checked]="facility.selected" (change)="toggleSelection(facility)">
+              {{ facility.facilityName }} <span *ngIf="facility.isSingleEntity">(Single)</span>
+            </mat-checkbox>
+          </div>
+          <div *ngIf="facility.children.length" class="facility-children" style="padding-left: 20px;">
+            <ng-container *ngFor="let child of facility.children">
+              <ng-container *ngTemplateOutlet="renderFacility; context: { $implicit: child }"></ng-container>
+            </ng-container>
+          </div>
+        </ng-template>
+
+        <ng-container *ngFor="let f of facilities">
+          <ng-container *ngTemplateOutlet="renderFacility; context: { $implicit: f }"></ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #noData>
+        <p>No facilities found or still loading...</p>
+      </ng-template>
+
+      <div class="selected-summary">
+        <h4>Selected Facilities:</h4>
+        <ul>
+          <li *ngFor="let f of selectedFacilities">{{ f.facilityName }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

@@ -5,6 +5,7 @@ export const MENU_DATA: MenuItem[] = [
     id: "1a1",
     title: "Executive Dashboard",
     route: "/ExecDash/dashboard",
+    icon: 'dashboard'
   },
   {
     id: "2a1",

@@ -1,0 +1,26 @@
+<div *ngIf="loading">Loading facilities...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<ul *ngIf="!loading && facilities.length">
+  <ng-container *ngFor="let facility of facilities">
+    <li>
+      {{ facility.facilityName }} 
+      <span *ngIf="facility.isSingleEntity">(Single Entity)</span>
+      <ul *ngIf="facility.children.length">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: facility.children }"></ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ul>
+
+<ng-template #recursiveList let-facilities>
+  <ng-container *ngFor="let facility of facilities">
+    <li>
+      {{ facility.facilityName }} 
+      <span *ngIf="facility.isSingleEntity">(Single Entity)</span>
+      <ul *ngIf="facility.children.length">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: facility.children }"></ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ng-template>
