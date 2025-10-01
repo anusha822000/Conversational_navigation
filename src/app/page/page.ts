@@ -32,31 +32,47 @@ export class PageComponent {
   }
 
   openFacilityPopup() {
-    this.showFacilityPopup = true;
-    this.facilityService.getFacilityHierarchy().subscribe({
-      next: (data: Facility[]) => {
-        this.facilities = data;
-      },
-      error: err => {
-        console.error(err);
-        this.facilities = [];
-      }
-    });
-  }
+  this.showFacilityPopup = true;
+
+  this.facilityService.getFacilityHierarchy().subscribe({
+    next: (data: Facility[]) => {
+      this.facilities = this.markSelectedFacilities(data);
+    },
+    error: err => {
+      console.error(err);
+      this.facilities = [];
+    }
+  });
+}
+
+/** Recursively mark selected facilities */
+markSelectedFacilities(facilities: Facility[]): Facility[] {
+  return facilities.map(f => ({
+    ...f,
+    selected: this.selectedFacilities.some(sel => sel.facilityId === f.facilityId),
+    children: f.children ? this.markSelectedFacilities(f.children) : []
+  }));
+}
+
 
   closeFacilityPopup() {
     this.showFacilityPopup = false;
   }
 
-  toggleSelection(facility: Facility) {
-    facility.selected = !facility.selected;
-
-    if (facility.selected) {
+  // ✅ toggle selection based on checkbox state
+  toggleSelection(facility: Facility, checked: boolean) {
+    facility.selected = checked; 
+    if (checked) {
       if (!this.selectedFacilities.find(f => f.facilityId === facility.facilityId)) {
         this.selectedFacilities.push(facility);
       }
     } else {
       this.selectedFacilities = this.selectedFacilities.filter(f => f.facilityId !== facility.facilityId);
     }
+  }
+
+  // ✅ helper to check if facility is selected
+  isSelected(facility: Facility): boolean {
+    return this.selectedFacilities.some(f => f.facilityId === facility.facilityId);
   }
 }

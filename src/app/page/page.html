@@ -17,9 +17,14 @@
       <ng-container *ngIf="facilities.length; else noData">
         <ng-template #renderFacility let-facility>
           <div class="facility-item">
-            <mat-checkbox [checked]="facility.selected" (change)="toggleSelection(facility)">
-              {{ facility.facilityName }} <span *ngIf="facility.isSingleEntity">(Single)</span>
-            </mat-checkbox>
+            <mat-checkbox 
+  [checked]="facility.selected" 
+  (change)="toggleSelection(facility, $event.checked)">
+  {{ facility.facilityName }} 
+  <span *ngIf="facility.isSingleEntity">(Single)</span>
+</mat-checkbox>
+
+
           </div>
           <div *ngIf="facility.children.length" class="facility-children" style="padding-left: 20px;">
             <ng-container *ngFor="let child of facility.children">
@@ -36,13 +41,14 @@
       <ng-template #noData>
         <p>No facilities found or still loading...</p>
       </ng-template>
-
-      <div class="selected-summary">
-        <h4>Selected Facilities:</h4>
-        <ul>
-          <li *ngFor="let f of selectedFacilities">{{ f.facilityName }}</li>
-        </ul>
-      </div>
     </div>
+  </div>
+
+  <!-- ✅ Selected facilities moved outside popup -->
+  <div class="main-content">
+    <h3>Selected Facilities</h3>
+    <ul>
+      <li *ngFor="let f of selectedFacilities">{{ f.facilityName }}</li>
+    </ul>
   </div>
 </div>
