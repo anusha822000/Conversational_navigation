@@ -1,12 +1,23 @@
 import { MenuItem } from './models/menu.model';
 
 export const MENU_DATA: MenuItem[] = [
+
   {
-    id: "1a1",
+  id: "brokenlink",
+  title: "Broken Links",
+  route: "/brokenlink",
+  icon: "link_off",
+  
+},
+  
+  {
+    id: "1a2",
     title: "Executive Dashboard",
     route: "/ExecDash/dashboard",
     icon: 'dashboard'
   },
+
+
   {
     id: "2a1",
     title: "Assessments",
@@ -167,4 +178,5 @@ export const MENU_DATA: MenuItem[] = [
       }
     ]
   }
+
 ];

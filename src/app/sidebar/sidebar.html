@@ -1,3 +1,4 @@
+
 <mat-nav-list class="sidebar sidebar-container">
   <div *ngFor="let primary of menu" class="menu-item">
     <div class="menu-title" (click)="primary.children ? toggle(primary.id) : navigate(primary.route)">
@@ -15,6 +16,9 @@
           </mat-icon>
           <span class="menu-text">{{ secondary.title }}</span>
         </div>
+
+        
+
 
         <mat-nav-list class="submenu" *ngIf="secondary.children && secondary.expanded">
           <a mat-list-item

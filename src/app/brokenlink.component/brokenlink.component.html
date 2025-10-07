@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="title">Broken Link Manager</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="links">View Links</button>
+  <button mat-button routerLink="add-link">Add Link</button>
+  <button mat-button routerLink="upload-document">Upload Document</button>
+  <button mat-button routerLink="view-documents">View Documents</button>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<app-chatbot></app-chatbot>

@@ -1,0 +1,49 @@
+<mat-card class="uploaded-documents-card">
+  <mat-card-title>Uploaded Documents</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="documents" class="mat-elevation-z8" *ngIf="documents.length > 0">
+ 
+      <!-- File Name -->
+      <ng-container matColumnDef="fileName">
+        <th mat-header-cell *matHeaderCellDef> File Name </th>
+        <td mat-cell *matCellDef="let doc">{{ doc.fileName }}</td>
+      </ng-container>
+ 
+      <!-- Path -->
+      <ng-container matColumnDef="path">
+        <th mat-header-cell *matHeaderCellDef> Path </th>
+        <td mat-cell *matCellDef="let doc">{{ doc.filePath }}</td>
+      </ng-container>
+ 
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let doc">{{ doc.status || 'Unknown' }}</td>
+      </ng-container>
+ 
+      <!-- Last Checked -->
+      <ng-container matColumnDef="lastChecked">
+        <th mat-header-cell *matHeaderCellDef> Last Checked </th>
+        <td mat-cell *matCellDef="let doc">
+          {{ doc.lastChecked ? (doc.lastChecked | date:'short') : '-' }}
+        </td>
+      </ng-container>
+ 
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+  <th mat-header-cell *matHeaderCellDef> Actions </th>
+  <td mat-cell *matCellDef="let doc">
+    <a [href]="doc.filePath" target="_blank" rel="noopener noreferrer" mat-button color="primary">View</a>
+    <button mat-button color="warn" (click)="deleteDocument(doc)">Delete</button>
+  </td>
+</ng-container>
+
+ 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+ 
+    <p *ngIf="documents.length === 0">No documents uploaded yet.</p>
+  </mat-card-content>
+</mat-card>
+ 

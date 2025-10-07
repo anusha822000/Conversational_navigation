@@ -1,0 +1,67 @@
+/* Toolbar styling */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1976d2; /* Material Blue 700 */
+  color: white;
+  padding: 0 20px;
+  height: 64px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+/* Toolbar buttons */
+.toolbar button {
+  color: white;
+  font-weight: 500;
+  margin-left: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.toolbar button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main content area */
+.content {
+  padding: 20px;
+  background-color: #f5f7fa;
+  min-height: calc(100vh - 64px);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Chatbot position */
+app-chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Optional: Router outlet fade animation */
+.content ::ng-deep router-outlet + * {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,58 @@
+.add-link-card {
+  max-width: 500px;
+  margin: 24px auto;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+ 
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  }
+ 
+  mat-card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1976d2;
+
+  }
+ 
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+  }
+ 
+  .full-width {
+    width: 100%;
+  }
+ 
+  button {
+    align-self: flex-end;
+    padding: 10px 24px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+ 
+    &:hover {
+      background: #1565c0;
+  }
+}
+ 
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .add-link-card {
+    margin: 16px;
+    padding: 12px;
+  }
+ 
+  mat-card-title {
+    font-size: 20px;
+  }
+ 
+  button {
+    width: 100%;
+  }
+}
+}
