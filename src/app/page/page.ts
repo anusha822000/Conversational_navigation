@@ -61,7 +61,7 @@ markSelectedFacilities(facilities: Facility[]): Facility[] {
 
   // ✅ toggle selection based on checkbox state
   toggleSelection(facility: Facility, checked: boolean) {
-    facility.selected = checked; 
+    // facility.selected = checked; 
     if (checked) {
       if (!this.selectedFacilities.find(f => f.facilityId === facility.facilityId)) {
         this.selectedFacilities.push(facility);

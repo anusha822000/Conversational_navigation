@@ -7,7 +7,8 @@ export const MENU_DATA: MenuItem[] = [
   title: "Broken Links",
   route: "/brokenlink",
   icon: "link_off",
-  
+  expanded: false,
+  children: []
 },
   
   {
