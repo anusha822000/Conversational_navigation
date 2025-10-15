@@ -1,18 +1,9 @@
 import { MenuItem } from './models/menu.model';
 
 export const MENU_DATA: MenuItem[] = [
-
-  {
-  id: "brokenlink",
-  title: "Broken Links",
-  route: "/brokenlink",
-  icon: "link_off",
-  expanded: false,
-  children: []
-},
   
   {
-    id: "1a2",
+    id: "1a1",
     title: "Executive Dashboard",
     route: "/ExecDash/dashboard",
     icon: 'dashboard'
@@ -124,7 +115,21 @@ export const MENU_DATA: MenuItem[] = [
       { id: "4b12", title: "Upload", route: "/purchasinginsights/upload" }
     ]
   },
-  { id: "5a1", title: "Resources", route: "/resources" },
+ {
+  id: "5a1",
+  title: "Resources",
+  route: "/resources",
+  expanded: false,
+  children: [
+    {
+      id: "brokenlink",
+      title: "Broken Links",
+      route: "/brokenlink",
+      icon: "link_off"
+    }
+  ]
+},
+
   {
     id: "6a1",
     title: "Metrics",
@@ -178,6 +183,6 @@ export const MENU_DATA: MenuItem[] = [
         ]
       }
     ]
-  }
+  },
 
 ];
